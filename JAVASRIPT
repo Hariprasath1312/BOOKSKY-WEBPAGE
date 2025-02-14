@@ -1,0 +1,34 @@
+var popupoverlay=document.querySelector(".overlay")
+var popupbox=document.querySelector(".popup_box")
+var addpopupbutton=document.getElementById("add-popup-button")
+addpopupbutton.addEventListener("click",function(){
+    popupoverlay.style.display="block"
+    popupbox.style.display="block"
+})
+var cancelpopup=document.getElementById("cancel")
+cancelpopup.addEventListener("click",function(){
+    popupoverlay.style.display="none"
+    popupbox.style.display="none"
+})
+//select container,add-book-button,booktitle,author_ip,short description
+
+var container =document.querySelector(".container")
+var addbutton=document.getElementById("add_book")
+var bookip=document.getElementById("book_ip")
+var authorip=document.getElementById("author_ip")
+var descriptionip=document.getElementById("description_ip")
+
+addbutton.addEventListener("click",function(){
+    var div=document.createElement("div")
+    div.setAttribute("class","book_container")
+    div.innerHTML=`<h2>${bookip.value}</h2>
+            <h5>${authorip.value}</h5>
+            <p>${descriptionip.value}</p>
+            <button onclick="delete_book(event)">delete</button>`
+    container.append(div)
+    popupoverlay.style.display="none"
+    popupbox.style.display="none"
+})
+function delete_book(event){
+    event.target.parentElement.remove()
+}
